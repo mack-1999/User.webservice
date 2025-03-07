@@ -66,7 +66,7 @@
 		</dependency>
 		
 		<!-- Spring Cloud -->
-	<!--	<dependency>
+		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>	
@@ -74,7 +74,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
--->		
+		
 		<!-- Other Dependencies -->
 		<dependency>
 		    <groupId>io.github.resilience4j</groupId>
