@@ -8,17 +8,43 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
    jpa:
       hibernate:
-         ddl-auto: update
-      show-sql: true
+         ddl-auto: update #Automatically updates the database schema.
+      show-sql: true #Logs SQL queries in the console.
       properties:
          hibernate:
-            dialect: org.hibernate.dialect.MySQLDialect
+            dialect: org.hibernate.dialect.MySQLDialect #Optimizes SQL generation for MySQL.
 
    config:
       import: optional:configserver:http://localhost:8083
 
 server:
    port: 8080
+   
+management:
+   health:
+      circuitbreakers:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: health, circuitbreakers
+   endpoint:
+      health:
+         show-details: always
+
+resilience4j:
+ circuitbreaker:
+  instances:
+   userService:
+    registerHealthIndicator: true
+    eventConsumerBufferSize: 10
+    slidingWindowSize: 5
+    slidingWindowType: COUNT_BASED
+    failureRateThreshold: 50
+    waitDurationInOpenState: 6s
+    permittedNumberOfCallsInHalfOpenState: 10
+    automaticTransitionFromOpenToHalfOpenEnabled: true
+    minimumNumberOfCalls: 3
 
 #eureka:
 #   instance:
