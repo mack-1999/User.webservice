@@ -33,9 +33,14 @@ management:
          show-details: always
 
 resilience4j:
+ retry:
+  instance:
+   userServiceRetry:
+    max-attempts: 3
+    wait-duration: 2s
  circuitbreaker:
   instances:
-   userService:
+   userServiceCircuitBreaker:
     registerHealthIndicator: true
     eventConsumerBufferSize: 10
     slidingWindowSize: 5
@@ -45,6 +50,13 @@ resilience4j:
     permittedNumberOfCallsInHalfOpenState: 10
     automaticTransitionFromOpenToHalfOpenEnabled: true
     minimumNumberOfCalls: 3
+ ratelimiter:
+  instance:
+   userServiceRateLimiter:
+    limit-refresh-time: 4s
+    limit-for-period: 2
+    timeout-duration: 2s
+
 
 #eureka:
 #   instance:
