@@ -19,7 +19,8 @@ spring:
 
 server:
    port: 8080
-   
+
+#Config: Spring Actuator   
 management:
    health:
       circuitbreakers:
@@ -27,7 +28,8 @@ management:
    endpoints:
       web:
          exposure:
-            include: health, circuitbreakers
+            include: "*"
+         base-path: /admin #Custome Path for Actuator Endpoints
    endpoint:
       health:
          show-details: always
