@@ -1,11 +1,16 @@
 spring:
+   main:
+      web-application-type: reactive
+
    application:
       name: USER-SERVICE
+
    datasource:
       url: jdbc:mysql://localhost:3306/hoteldb
       username: root
       password: Mack@12345
       driver-class-name: com.mysql.cj.jdbc.Driver
+
    jpa:
       hibernate:
          ddl-auto: update #Automatically updates the database schema.
@@ -40,6 +45,7 @@ resilience4j:
    userServiceRetry:
     max-attempts: 3
     wait-duration: 2s
+
  circuitbreaker:
   instances:
    userServiceCircuitBreaker:
@@ -52,6 +58,7 @@ resilience4j:
     permittedNumberOfCallsInHalfOpenState: 10
     automaticTransitionFromOpenToHalfOpenEnabled: true
     minimumNumberOfCalls: 3
+
  ratelimiter:
   instance:
    userServiceRateLimiter:
