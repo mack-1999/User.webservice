@@ -1,4 +1,9 @@
 spring:
+
+   cache:
+      jcache:
+         config: classpath:ehcache.xml
+
    main:
       web-application-type: reactive
 

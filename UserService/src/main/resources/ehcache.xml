@@ -1,0 +1,42 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="true"
+         monitoring="autodetect"
+         dynamicConfig="true"
+         diskPersistent="true">
+
+    <!-- Disk persistence configuration -->
+    <diskStore path="user.dir" />
+
+    <defaultCache
+        maxElementsInMemory="1000"
+        eternal="false"
+        timeToIdleSeconds="120"
+        timeToLiveSeconds="300"
+        overflowToDisk="true"
+        diskPersistent="true"
+        diskExpiryThreadIntervalSeconds="120"
+        maxElementsOnDisk="5000"/>
+
+    <!-- Define a named cache -->
+    <!-- name="userCache" → Defines the cache name as "userCache".
+		 maxElementsInMemory="1000" → Stores up to 1000 elements in memory.
+		 eternal="false" → Entries will expire based on TTL and TTI settings.
+		 timeToIdleSeconds="120" → Removes an entry if it's not accessed for 120 seconds.
+		 timeToLiveSeconds="300" → Deletes an entry if it remains in the cache for 300 seconds,
+		 regardless of access.
+		 overflowToDisk="true" → Stores excess data on disk when memory limit is exceeded.
+		 diskPersistent="true" → Persists cached data to disk across application restarts.
+		 maxElementsOnDisk="5000" → Allows up to 5000 elements to be stored on disk.
+		 diskExpiryThreadIntervalSeconds="120" → Runs a cleanup thread every 120 seconds to remove expired
+		 disk entries. -->
+    <cache name="userCache"
+           maxElementsInMemory="1000" 
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="300"
+           overflowToDisk="true"
+           diskPersistent="true"
+           maxElementsOnDisk="5000"
+           diskExpiryThreadIntervalSeconds="120"/>
+</ehcache>
