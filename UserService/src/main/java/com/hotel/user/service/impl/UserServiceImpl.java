@@ -63,13 +63,14 @@ public class UserServiceImpl implements UserService{
 		User user = this.userRepo.findById(userId)
 						.orElseThrow(() -> new ResourceNotFoundException("User with id" + userId + "not found"));
 		
-		//Get Rating data from RATING-SERVICE (Service-to-Service Call)
+		// Get Rating data from RATING-SERVICE (Service-to-Service Call)
 		logger.info("Service to service: Rating-Service");
 		List<Rating> ratingsOfUser = ratingService.getAllRatingByUserId(user.getUserId());
 		
 		logger.info("Service to service: Hotel-Service");
 		List<Rating> ratingList = ratingsOfUser.stream().map(rating -> {
-			//Get hotel data from HOTEL-SERVICE (Service-to-Service Call)
+			// Get hotel data from HOTEL-SERVICE (Service-to-Service Call)
+			// Feign automatically performs load balancing across available HOTEL-SERVICE instances.
 			Hotel hotel = hotelService.getHotelDataById(rating.getHotelId());
 			
 			rating.setHotel(hotel); //Add hotel details within ratings

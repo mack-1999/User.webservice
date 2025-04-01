@@ -15,6 +15,7 @@ public class MyConfig {
 		return new ModelMapper();
 	}
 	
+	// Configure LoadBalanced RestTemplate (Optional for RestTemplate Users)
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {
@@ -25,4 +26,10 @@ public class MyConfig {
     public HttpMessageConverters customConverters() {
         return new HttpMessageConverters(new MappingJackson2HttpMessageConverter());
     }
+	
+	/*
+	 * @Bean public CacheManager cacheManager() { return new EhcacheManager( new
+	 * XmlConfiguration(getClass().getResource("src/main/resources/ehcache.xml")) );
+	 * }
+	 */
 }
