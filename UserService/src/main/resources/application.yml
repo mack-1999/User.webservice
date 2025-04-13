@@ -5,7 +5,7 @@ spring:
          config: classpath:ehcache.xml
 
    main:
-      web-application-type: reactive
+      web-application-type: servlet
 
    application:
       name: USER-SERVICE
