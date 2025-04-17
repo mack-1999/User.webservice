@@ -10,12 +10,12 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 @EnableFeignClients
 @EnableEurekaServer
-@EnableCaching  // Enables Spring's caching mechanism
+@EnableCaching // Enables Spring's caching mechanism
 public class UserServiceApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(UserServiceApplication.class, args);
-		
+
 		// Print all available beans from User Service App
 		/*
 		 * String[] beanNames = context.getBeanDefinitionNames();

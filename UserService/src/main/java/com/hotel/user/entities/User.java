@@ -3,6 +3,7 @@ package com.hotel.user.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
@@ -14,6 +15,7 @@ public class User {
 	@Id
 	private String userId;
 	private String name;
+	@Column(unique = true)
 	private String email;
 	
 	@Transient

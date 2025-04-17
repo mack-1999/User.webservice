@@ -26,18 +26,26 @@ import com.hotel.user.service.UserService;
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired
-	UserRepository userRepo;
+	UserRepository userRepo; // Field Dependency Injection
 	
 	@Autowired
 	ModelMapper modelMapper;
 	
-	@Autowired
 	private HotelService hotelService;
 	
-	@Autowired
 	private RatingService ratingService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+	
+	@Autowired
+	public UserServiceImpl(RatingService ratingService) {
+		this.ratingService = ratingService; // Constructor Dependency Injection
+	}
+	
+	@Autowired
+	public void sethotelService(HotelService hotelService) {
+		this.hotelService = hotelService; // Setter Dependency Injection
+	}
 	
 	@Override
 	@CacheEvict(value = "userCache", allEntries = true) // Clears entire "users" cache

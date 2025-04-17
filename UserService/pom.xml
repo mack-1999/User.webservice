@@ -34,12 +34,12 @@
 	</properties>
 	
 	<dependencies>
-		<!-- Spring-boot Starter -->
 		<!-- Circuit Breaker -->
 		<dependency>
 		    <groupId>io.github.resilience4j</groupId>
 		    <artifactId>resilience4j-spring-boot3</artifactId>
 		</dependency>
+		<!-- Spring-boot Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -47,37 +47,27 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!--<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>-->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>	
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
 		</dependency>
 		
 		<!-- Spring Cache -->
@@ -85,8 +75,7 @@
 		    <groupId>net.sf.ehcache</groupId>
 		    <artifactId>ehcache</artifactId>
 		    <version>2.10.6</version>
-		</dependency>
-		
+		</dependency>		
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-cache</artifactId>
@@ -122,12 +111,12 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-
-		<!--<dependency>
-			<groupId>com.hotel.ApiGateway</groupId>
-			<artifactId>ApiGatway</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
 		
 		<!-- JWT Dependencies -->
         <dependency>
@@ -145,7 +134,6 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.12.6</version>
         </dependency>
-
 	</dependencies>
 	
 	<dependencyManagement>
