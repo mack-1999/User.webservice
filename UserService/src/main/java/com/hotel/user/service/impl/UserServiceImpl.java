@@ -12,7 +12,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.hotel.user.controller.UserController;
 import com.hotel.user.dto.UserDto;
 import com.hotel.user.entities.Hotel;
 import com.hotel.user.entities.Rating;
@@ -25,16 +24,14 @@ import com.hotel.user.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
+	
 	@Autowired
 	UserRepository userRepo; // Field Dependency Injection
 	
 	@Autowired
 	ModelMapper modelMapper;
-	
 	private HotelService hotelService;
-	
 	private RatingService ratingService;
-	
 	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
@@ -65,7 +62,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	@Cacheable(value = "userCache", key = "#userId")  // Fetch from cache if available
+	//@Cacheable(value = "userCache", key = "#userId")  // Fetch from cache if available
 	public UserDto getUserById(String userId) {
 		// Find User id in DB or else throw an user defined exception
 		User user = this.userRepo.findById(userId)

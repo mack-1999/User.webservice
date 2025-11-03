@@ -62,7 +62,7 @@ public class UserController {
         return ResponseEntity.ok("Downstream Service is Down");
     }
     
-    // Fallback method when circuit breaker is OPEN
+    // Fallback method for Rate Limiter
     public BodyBuilder userFallbackRateLimiter(String userId, Throwable ex) {
         logger.error("Fallback method executed due to: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS);
